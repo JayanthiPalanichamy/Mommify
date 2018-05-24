@@ -16,4 +16,9 @@ public class MommyTest {
     public void shouldReturnStringWhenStringHasNoVowels() {
         assertEquals("dfhg",mommy.mommyify("dfhg"));
     }
+
+    @Test
+    public void shouldReplaceWithMommyWhenInputStringHasOneVowel() {
+        assertEquals("HMommyr",mommy.mommyify("Her"));
+    }
 }
