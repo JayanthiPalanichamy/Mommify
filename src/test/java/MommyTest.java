@@ -27,5 +27,10 @@ public class MommyTest {
         assertEquals("HMommyrMommy",mommy.mommyify("Here"));
     }
 
+    @Test
+    public void shouldReplaceWithMommiesIfThereAreTwoContinousVowels() {
+        assertEquals("HMommiesr", mommy.mommyify("Hear"));
+
+    }
 
 }

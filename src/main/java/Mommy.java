@@ -1,14 +1,30 @@
 public class Mommy {
     public String mommyify(String inputString) {
+        int count=0;
         StringBuilder stringBuilder= new StringBuilder("");
-            for (int i = 0; i < inputString.length(); i++) {
-                if (inputString.charAt(i) == 'a' || inputString.charAt(i) == 'e' || inputString.charAt(i) == 'i' || inputString.charAt(i) == 'o' || inputString.charAt(i) == 'u') {
-                    stringBuilder.append("Mommy");
-                } else {
 
+            for (int i = 0; i < inputString.length(); i++) {
+                if (count == 0 && (inputString.charAt(i) == 'a' || inputString.charAt(i) == 'e' || inputString.charAt(i) == 'i' || inputString.charAt(i) == 'o' || inputString.charAt(i) == 'u')) {
+                    stringBuilder.append("Momm");
+                    count++;
+                } else if (count > 0 && (inputString.charAt(i) == 'a' || inputString.charAt(i) == 'e' || inputString.charAt(i) == 'i' || inputString.charAt(i) == 'o' || inputString.charAt(i) == 'u')) {
+                    count++;
+                } else {
+                    if (count == 1) {
+                        stringBuilder.append("y");
+                    } else if (count > 1) {
+                        stringBuilder.append("ies");
+                    }
                     stringBuilder.append(inputString.charAt(i));
+                    count = 0;
                 }
             }
-        return stringBuilder.toString();
+            if (count == 1) {
+                stringBuilder.append("y");
+            } else if (count > 1) {
+                stringBuilder.append("ies");
+            }
+            return stringBuilder.toString();
+
     }
 }
