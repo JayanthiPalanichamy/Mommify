@@ -33,4 +33,10 @@ public class MommyTest {
 
     }
 
+    @Test
+    public void shouldReplaceWithMommiesIfThereAreMoreThanTwoContinousVowels() {
+        assertEquals("HMommiesrMommymMommiesdfgMommies", mommy.mommyify("Heeeeearumioooodfgii"));
+
+    }
+
 }
