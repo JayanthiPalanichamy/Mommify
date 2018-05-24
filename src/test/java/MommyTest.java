@@ -21,4 +21,11 @@ public class MommyTest {
     public void shouldReplaceWithMommyWhenInputStringHasOneVowel() {
         assertEquals("HMommyr",mommy.mommyify("Her"));
     }
+
+    @Test
+    public void shouldReplaceWithMommyWhenInputStringHasMoreThanOneVowel() {
+        assertEquals("HMommyrMommy",mommy.mommyify("Here"));
+    }
+
+
 }
