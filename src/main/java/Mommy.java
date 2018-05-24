@@ -1,41 +1,51 @@
 public class Mommy {
-    public String mommyify(String inputString) {
-        int count=0;
-        StringBuilder stringBuilder= new StringBuilder("");
+
+    public String mommify(String inputString) {
+        int numberOfContinuousVowels = 0;
+        StringBuilder mommifiedString= new StringBuilder("");
+
         if(calculateVowelPercentage(inputString) >= 30.0) {
-            for (int i = 0; i < inputString.length(); i++) {
-                if (count == 0 && (inputString.charAt(i) == 'a' || inputString.charAt(i) == 'e' || inputString.charAt(i) == 'i' || inputString.charAt(i) == 'o' || inputString.charAt(i) == 'u')) {
-                    stringBuilder.append("Momm");
-                    count++;
-                } else if (count > 0 && (inputString.charAt(i) == 'a' || inputString.charAt(i) == 'e' || inputString.charAt(i) == 'i' || inputString.charAt(i) == 'o' || inputString.charAt(i) == 'u')) {
-                    count++;
+            for (int index = 0; index < inputString.length(); index++) {
+                if (numberOfContinuousVowels == 0 && checkIfVowel(inputString,index) ) {
+                    mommifiedString.append("Momm");
+                    numberOfContinuousVowels++;
+                } else if (numberOfContinuousVowels > 0 && checkIfVowel(inputString,index)  ) {
+                    numberOfContinuousVowels++;
                 } else {
-                    if (count == 1) {
-                        stringBuilder.append("y");
-                    } else if (count > 1) {
-                        stringBuilder.append("ies");
-                    }
-                    stringBuilder.append(inputString.charAt(i));
-                    count = 0;
+                    mommifiedString = appendSuffix(numberOfContinuousVowels,mommifiedString);
+                    mommifiedString.append(inputString.charAt(index));
+                    numberOfContinuousVowels = 0;
                 }
             }
-            if (count == 1) {
-                stringBuilder.append("y");
-            } else if (count > 1) {
-                stringBuilder.append("ies");
-            }
-            return stringBuilder.toString();
+            mommifiedString = appendSuffix(numberOfContinuousVowels,mommifiedString);
+            return mommifiedString.toString();
         }
         return inputString;
     }
 
+    private StringBuilder appendSuffix(int count,StringBuilder mommifiedString) {
+        if (count == 1) {
+            mommifiedString.append("y");
+        } else if (count > 1) {
+            mommifiedString.append("ies");
+        }
+        return mommifiedString;
+    }
+
     private double calculateVowelPercentage(String inputString) {
-        double count=0;
-        for(int i=0 ;i< inputString.length();i++) {
-            if ((inputString.charAt(i) == 'a' || inputString.charAt(i) == 'e' || inputString.charAt(i) == 'i' || inputString.charAt(i) == 'o' || inputString.charAt(i) == 'u')) {
-                count++;
+        double numberOfVowels = 0;
+        int lengthOfString = inputString.length();
+
+        for(int index = 0 ;index < lengthOfString;index++) {
+            if (checkIfVowel(inputString,index)) {
+                numberOfVowels++;
             }
         }
-        return (count/inputString.length())*100.0;
+        return (numberOfVowels / lengthOfString) * 100.0;
+    }
+
+    private boolean checkIfVowel(String inputString, int index) {
+        return (inputString.charAt(index) == 'a' || inputString.charAt(index) == 'e' || inputString.charAt(index) == 'i' || inputString.charAt(index) == 'o' || inputString.charAt(index) == 'u');
+
     }
 }

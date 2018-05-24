@@ -7,42 +7,37 @@ public class MommyTest {
     Mommy mommy;
 
     @Before
-
     public void setUp() {
         mommy = new Mommy();
     }
 
     @Test
     public void shouldReturnStringWhenStringHasNoVowels() {
-        assertEquals("dfhg",mommy.mommyify("dfhg"));
+        assertEquals("dfhg", mommy.mommify("dfhg"));
     }
 
     @Test
     public void shouldReplaceWithMommyWhenInputStringHasOneVowel() {
-        assertEquals("HMommyr",mommy.mommyify("Her"));
+        assertEquals("HMommyr", mommy.mommify("Her"));
     }
 
     @Test
     public void shouldReplaceWithMommyWhenInputStringHasMoreThanOneVowel() {
-        assertEquals("HMommyrMommy",mommy.mommyify("Here"));
+        assertEquals("HMommyrMommy", mommy.mommify("Here"));
     }
 
     @Test
-    public void shouldReplaceWithMommiesIfThereAreTwoContinousVowels() {
-        assertEquals("HMommiesr", mommy.mommyify("Hear"));
-
+    public void shouldReplaceWithMommiesIfThereAreTwoContinuousVowels() {
+        assertEquals("HMommiesr", mommy.mommify("Hear"));
     }
 
     @Test
-    public void shouldReplaceWithMommiesIfThereAreMoreThanTwoContinousVowels() {
-        assertEquals("HMommiesrMommymMommiesdfgMommies", mommy.mommyify("Heeeeearumioooodfgii"));
-
+    public void shouldReplaceWithMommiesIfThereAreMoreThanTwoContinuousVowels() {
+        assertEquals("HMommiesrMommymMommiesdfgMommies", mommy.mommify("Heeeeearumioooodfgii"));
     }
 
     @Test
     public void returnTheInputStringIfVowelPercentIsLessThanThirty() {
-        assertEquals("this", mommy.mommyify("this"));
+        assertEquals("this", mommy.mommify("this"));
     }
-
-
 }
