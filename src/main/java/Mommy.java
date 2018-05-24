@@ -2,7 +2,7 @@ public class Mommy {
     public String mommyify(String inputString) {
         int count=0;
         StringBuilder stringBuilder= new StringBuilder("");
-
+        if(calculateVowelPercentage(inputString) >= 30.0) {
             for (int i = 0; i < inputString.length(); i++) {
                 if (count == 0 && (inputString.charAt(i) == 'a' || inputString.charAt(i) == 'e' || inputString.charAt(i) == 'i' || inputString.charAt(i) == 'o' || inputString.charAt(i) == 'u')) {
                     stringBuilder.append("Momm");
@@ -25,6 +25,17 @@ public class Mommy {
                 stringBuilder.append("ies");
             }
             return stringBuilder.toString();
+        }
+        return inputString;
+    }
 
+    private double calculateVowelPercentage(String inputString) {
+        double count=0;
+        for(int i=0 ;i< inputString.length();i++) {
+            if ((inputString.charAt(i) == 'a' || inputString.charAt(i) == 'e' || inputString.charAt(i) == 'i' || inputString.charAt(i) == 'o' || inputString.charAt(i) == 'u')) {
+                count++;
+            }
+        }
+        return (count/inputString.length())*100.0;
     }
 }

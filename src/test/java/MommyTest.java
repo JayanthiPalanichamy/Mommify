@@ -39,4 +39,10 @@ public class MommyTest {
 
     }
 
+    @Test
+    public void returnTheInputStringIfVowelPercentIsLessThanThirty() {
+        assertEquals("this", mommy.mommyify("this"));
+    }
+
+
 }
