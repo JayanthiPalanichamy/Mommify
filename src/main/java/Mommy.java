@@ -2,7 +2,7 @@ public class Mommy {
 
     public String mommify(String inputString) {
         int numberOfContinuousVowels = 0;
-        StringBuilder mommifiedString= new StringBuilder("");
+        StringBuilder mommifiedString = new StringBuilder("");
 
         if(calculateVowelPercentage(inputString) >= 30.0) {
             for (int index = 0; index < inputString.length(); index++) {
